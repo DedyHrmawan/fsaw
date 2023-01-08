@@ -1,0 +1,105 @@
+@relation tweet
+@attribute requirement string
+@attribute class {positif, negatif}
+
+@data
+'sinovac pfizer astrazeneca semua ada risiko kipi mulai ringan sampai meninggal semua ada kasusnya indonesia',negatif
+'peneliti sebut vaksin sinovac pfizer kurang manjur lawan covid',negatif
+'tidak boleh milih milih vaksin tapi ternyata sinovac tidak akui sejumlah negara juga ternyata tidak ampuh melawan covid',negatif
+'bayar juga gakpapa penting butuh asupan vaksin selain sinovac',negatif
+'seru banget ngayal siang siang tapi tiba tiba inget vaksin aku sinovac',negatif
+'nasib penerima vaksin sinovac butuh booster sama aja kayak vaksin ulang dong',negatif
+'bilang kasus terobosan karena pakai vaksin sinovac tapi data rilis juga bilang kasus harian delta kita terjun bebas ketika vaksinasi sinovac genjot',negatif
+'karena aku penerima vaksin coronavac dari sinovac rasanya jadi kayak kembali ke titik awal',negatif
+'seorang siswi sekolah dasar jombang naura sabrina galiyah meninggal dunia pada jumat usai suntik vaksin sinovac dosis pertama',negatif
+'ada kemungkinan umur efektivitas vaksin sinovac juga terbatas',negatif
+'agak menyesal kenapa kemarin cari vaksin sinovac tapi syukur juga udah vaksin',negatif
+'udah kena covid abis vaksin sinovac',negatif
+'ini udah vaksin sinovac katanya kurang fungsi buat varian baru',negatif
+'dua kali saya vaksin sinovac dua kali timbul bentol sekujur tubuh selama tiga hari',negatif
+'takut banget anak sebong mainnya keroyokan aku udah vaksin dua kali tapi sinovac mana kuat',negatif
+'kasihan naura sabrina galiyah meninggal vaksin sinovac dosis pertama masa sebegitu begonya mana layak vaksin mana tidak',negatif
+'saya pakai sinovac suntikan pertama sudah hampir enam bulan efeknya masih saya bawa bawa makanya saya menolak keras mau vaksin lagi',negatif
+'kembali terjadi kabupaten jombang kali ini siswi sekolah dasar meninggal suntik sinovac',negatif
+'ngayal mau nonton konser vaksin kau sinovac sadar diri',negatif
+'udah vaksin belom jangan pake sinovac',negatif
+'kaleidoskop dua ribu dua puluh satu sepanjang oktober lalu mulai dari thailand menghentikan penggunaan vaksin sinovac',negatif
+'kalau efek vaksin sinovac ngantuk',negatif
+'kemarin habis vaksin sinovac dosis dua malah tambah sakit',negatif
+'kenapa badan jadi gatal habis vaksin sinovac',negatif
+'wajar ga sih habis suntik vaksin sinovac malah demam sekujur tubuh',negatif
+'kata orang vaksin sinovac kurang manjur lawan covid bener gak sih',negatif
+'jadi ragu kalau vaksin soalnya sinovac buatan china',negatif
+'kena covid bulan juli sudah dua kali vaksin sinovac kenapa masih kena covid',negatif
+'ini dampak vaksin sinovac atau gimana sih kok bawaanya sikat gigi melulu',negatif
+'baru baru ini banyak orang sebutkan vaksin sinovac tidak manjur',negatif
+'kalau begitu kenapa tidak hentikan saja semua vaksinasi sinovac itu mari pemerintah jangan buang buang uang negara vaksin nggak efektif ini',negatif
+'anggota komisi vii dpr mulyanto minta pemerintah jangan ragu mengganti vaksin sinovac merek lain bila terbukti tidak efektif',negatif
+'vaksin sinovac china miliki tingkat kemanjuran paling rendah daripada vaksin lainnya oleh sebab itu sinovac tidak efektif dalam menghentikan penularan varian delta merupakan varian baru covid',negatif
+'sebuah penelitian besar hongkong menemukan bahwa penerima suntikan sinovac menghasilkan tingkat antibodi jauh lebih rendah daripada mereka berikan vaksin pfizer',negatif
+'efektivitas vaksin sinovac perlu pertanyakan kita harus realistis',negatif
+'kosta rika meskipun negara sedang alami wabah covid parah namun tetao menolak guna vaksin sinovac china karena pejabat kesehatan peringatkan bahwa vaksin tersebut tidak cukup efektif',negatif
+'indonesia lebih dari tiga ratus lima puluh petugas kesehatan dokter garis depan telah terinfeksi puluhan rawat rumah sakit varian delta meskipun telah vaksinasi sinovac',negatif
+'gimana bisa meyakinkan masyarakat cukup dua kali kalau bilang antibodi turun enam bulan gimana orang gak hilang kepercayaan ke sinovac kalau vaksin tiga pakai merk lain',negatif
+'vaksin sinovac efektifitasnya cuma lima puluh persen berani gak menkes baru ngebuang semua vaksin itu karena tidak terlalu efektif banding vaksin lain',negatif
+'kami sebagai masyarakat menginginkan hentikan pamakaian vaksin sinovac karena vaksin ini tidak efektif kami minta pemakaian vaksin buatan dalam negri sangat kami harapkan',negatif
+'nah memang ada bilang vaksin enggak efektif tentu tidak efektif karena kita pakai vaksin sinovac kualitasnya rendah artinya dari serratus orang vaksin lima puluh itu efektif',negatif
+'vaksin sinovac tidak efektif melawan covid varian baru',negatif
+'siapa vaksin sinovac bahkan berbagai negara buktikan tidak efektif apa sudah terlanjur transaksi kartel obat sehingga terpaksa distribusi rakyat sendiri jadi sampel',negatif
+'jika vaksin sinovac tidak efektif jangan kaget jika kasus positif covid mendadak atas satu juta',negatif
+'kalau nantinya cairan vaksin sinovac suntikan kepada rakyat tidak terbukti efektif bahkan malah menimbulkan efek samping serius mengancam keselamatan jiwa rakyat indonesia maka presiden minta tanggung jawab paling utama',negatif
+'belum ada data penelitiannya jadi belum ada kesimpulan buat vaksin sinovac apakah efektif varian baru atau tidak',negatif
+'temen saya sudah vaksin sinovac indonesia dua kali pergi keluar negeri kerja sama perusahaannya suruh vaksin lagi karena sinovac tidak efektif jadi dia udah vaksin empat kali',negatif
+'masalahnya sekarang varian delta ini sinovac sangat tidak efektif sudah ada beberapa keluarga jauh meninggal walaupun sudah vaksin dua kali',negatif
+'kenapa hasil efikasi vaksin sinovac lebih rendah dari turki brazil apa berarti negara kita tidak efektif',negatif
+'kalo gak mau vaksin karena alasan sinovac tidak efektif gimana',negatif
+'majelis ulama indoesia lembaga sejenis nyatakan halal pada vaksin sinovac',positif
+'alhamdulillah ternyata vaksin sinovac itu halal soalnya majelis ulama indonesia telah merilis sertifikasi halal beberapa jenis vaksin',positif
+'alhamdulillah sekarang jadi sehat habis vaksin sinovac',positif
+'keberhasilan vaksin sinovac sudah tidak ragukan lagi',positif
+'vaksin sinovac dosis satu gak pake drama duduk sendiri alhamdulillah lancar',positif
+'awal januari dua ribu dua puluh satu vaksin sinovac aman cuma ngantuk februari vaksin ke dua aman tanpa kipi',positif
+'indonesia emang bagusnya pake sinovac aja dulu pake vaksin mrna tapi nggak ada edukasi kalau nggak boleh olahraga selama dua minggu',positif
+'vaksin sinovac terbukti aman melindungi anak dari virus covid',positif
+'vaksin anak usia enam sampai dua belas tahun guna vaksin jenis sinovac sudah teruji',positif
+'anak usia enam sampai dua belas tahun sudah boleh vaksin yaitu vaksin jenis sinovac',positif
+'dapat vaksin sinovac itu rasanya sungguh lega bersyukur',positif
+'terima kasih tim covid malam ini sudah berikan informasi tempat penyelenggaraan vaksin sinovac jumat besok purwakarta meski malam masih bersedia merespon',positif
+'ngeri banget saudara aku vaksin pfizer juga demam tinggi seminggu ga turun turun untungnya aku pake sinovac',positif
+'gue sinovac dua kali aja nggak kenapa kenapa bahkan pusing aja kagak pegel doang',positif
+'vaksin sinovac terbukti aman melindungi anak dari virus covid',positif
+'saya vaksin sinovac tadi polda sumatra barat alhamdulillah',positif
+'alhamdulillah anakku bungsu usia sebelas tahun akhirnya kebagian buat vaksin sinovac',positif
+'aku dulu pake vaksin sinovac udah lengkap dua dosis aman nggak ada dampak negatif',positif
+'semua vaksin berkhasiat aman keluargaku ada dapat sinovac astrazaneca pfizer biarpun berbeda penting kita sama-sama ingin selamat sehat',positif
+'kalau saya sudah vaksin sinovac dosis lengkap leganya bisa wara wiri ke banyak tempat prokes ketat',positif
+'semua vaksin ada indonesia baik itu sinovac astrazeneca moderna pfizer sudah proses dari bahan baku efektif mengurangi dampak sakit berat',positif
+'vaksin sinovac saat ini ada indonesia sudah melalui kajian dari bpom sudah mendapatkan persetujuan eua selalu lakukan pengawasan',positif
+'vaksin covid aman guna indonesia itu gak cuma sinovac semuanya aman karena sudah ada izin bpom',positif
+'bukan hanya vaksin sinovac saja semua vaksin tersedia sudah uji aman suntik vaksin yuk',positif
+'saya guna vaksin sinovac kok saya gak milih karena tujuan saya agar lingkungan sekitar saya bisa kebal gak ada alasan lain menunda',positif
+'aku pakai sinovac aman aman aja',positif
+'bocah vaksin sinovac drive thru asik juga',positif
+'selama pakai vaksin sinovac setiap keluar rumah jadi merasa aman yuk vaksin',positif
+'saya sudah dua kali vaksin sinovac terbukti aman',positif
+'vaksin sinovac terbukti aman prokes lindungi keluarga',positif
+'tidak perlu khawatir vaksin sinovac aman anak enam sampai dua belas tahun',positif
+'kak seto menjelaskan pentingnya vaksinasi anak vaksin sinovac terbukti aman melindungi anak dari virus covid',positif
+'vaksin covid guna anak enam sampai dua belas tahun saat ini yakni sinovac aman terbukti bisa mencegah sakit berat',positif
+'suruh pakai vaksin barat covid dibarat malahan parah negara kita pakai sinovac malahan aman',positif
+'vaksin sinovac aman minim gejala buat anak anak',positif
+'vaksin jadul sinovac sinipharm sih aman tapi vaksin terbaru efek samping pembekuan darah kejang mati',positif
+'kalo vaksin ke dua sinovac engga ada efek samping apa apa kalo aku',positif
+'vaksin sinovac lebih aman efektif menurutku',positif
+'ikatan dokter anak jatim pastikan vaksin sinovac aman bagi anak',positif
+'vaksin sinovac april mei lengkap alhamdulillah kondisi kesehatan sampai saat ini aman aman saja',positif
+'spanyol asal udah vaksin sinovac gak perlu karantina apalagi sekarang indonesia sudah masuk zona hijau uni eropa aman harusnya',positif
+'untungnya saya pas vaksin dapat sinovac aman aman saja semoga bapak tersebut bisa segera kembali seperti sedia kala',positif
+'bekas tusukan jarum vaksin moderna tuh emang jadi bengkak gitu apa gimana kayaknya kemarin pas sinovac masih aman aman aja',positif
+'vaksin sinovac amanpositif
+'saya akui sinovac lebih baik dari moderna mertua saya udah umur tujuh puluh tahun vaksin sinovac gak ada efek samping sama sekali',positif
+'untung aku pakai vaksin sinovac minim efek samping',positif
+'saya sudah vaksin sinovac komplit',positif
+'ingat pilih sinovac aja biar ga ada rewel anak anak',positif
+'aku lebih mending vaksin sinovac daripada lain',positif
+'vaksin sinovac efeknya tidak terlalu berat tubuh',positif
