@@ -25,10 +25,11 @@
                         <div class="col-lg-6">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header justify-content-center">
-                                <div class="text-center">
-                                    <img style="width:15%" class="navbar-brand-img ml-3" src="<?= base_url(); ?>assets/img/logo-man2.WEBP"></img>
-                                    <h3 class="font-weight-light my-4 text-center">Welcome <br><br> Sistem Pendukung Keputusan MAN 2 Kediri</h3>
-                                </div>    
+                                    <div class="text-center">
+                                        <img style="width:15%" class="navbar-brand-img ml-3" src="<?= base_url(); ?>assets/img/logo-man2.WEBP"></img>
+                                        <h3 class="font-weight-light my-4 text-center">Welcome <br><br> Sistem Pendukung Keputusan MAN 2 Kediri</h3>
+                                    </div>
+                                    <!-- <div class="alert alert-danger" role="alert"> Username / password salah! </div> -->
                                 </div>
                                 <div class="card-body">
                                     <form action="">
@@ -43,7 +44,7 @@
                                         <!-- Form Group (login box)-->
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="auth-password-basic.html">Forgot Password?</a>
-                                            <a class="btn btn-primary" href="<?=site_url('dashboard-tu')?>">Login</a>
+                                            <a class="btn btn-primary" href="<?= site_url('dashboard-tu') ?>">Login</a>
                                         </div>
                                     </form>
                                 </div>
@@ -69,7 +70,7 @@
     <script src="<?= base_url(); ?>assets/js/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="<?= base_url(); ?>assets/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="<?= base_url(); ?>assets/js/scripts.js"></script>
-  
+
 </body>
 
 </html>
