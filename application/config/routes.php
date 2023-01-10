@@ -54,9 +54,18 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 // Tata Usaha 
-$route['dashboard-tu'] = 'Welcome/VDashboardTu';
-$route['pegawai'] = 'Welcome/VPegawai';
-$route['user'] = 'Welcome/VUser';
+$route['dashboard-tu']          = 'TataUsahaController/VDashboardTu';
+$route['pegawai']               = 'TataUsahaController/VPegawai';
+$route['pegawai/store']         = 'TataUsahaController/storePegawai';
+$route['pegawai/edit']          = 'TataUsahaController/editPegawai';
+$route['pegawai/delete']        = 'TataUsahaController/deletePegawai';
+$route['pegawai/ajxGetPegawai'] = 'TataUsahaController/ajxGetPegawai';
+
+$route['user']              = 'TataUsahaController/VUser';
+$route['user/store']        = 'TataUsahaController/storeUser';
+$route['user/edit']         = 'TataUsahaController/editUser';
+$route['user/delete']       = 'TataUsahaController/deleteUser';
+$route['user/ajxGetUser']   = 'TataUsahaController/ajxGetUser';
 
 // WAKA 
 $route['dashboard-waka'] = 'Welcome/VDashboardWaka';
