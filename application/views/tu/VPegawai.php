@@ -38,19 +38,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Simon Kjaer</td>
-                                <td>S1 Pendidikan Jasmani</td>
-                                <td>Blitar, 08 Oktober 1999</td>
-                                <td>L</td>
-                                <td>Guru Honorer Olahraga</td>
-                                <td>
-                                    <button title="Detail Calon Pegawai" type="button" class="btn btn-primary ml-1 btn-sm mdl_detail" data-toggle="modal" data-target="#mdl_detail" data-id=""><i class="fa fa-ellipsis-h"></i></button>
-                                    <button title="Edit Calon Pegawai" type="button" class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id=""><i class="fa fa-edit"></i></button>
-                                    <button title="Hapus Calon Pegawai" type="button" class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id=""><i class="fa fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            <?php
+                                $no = 1;
+                                foreach($list as $item){
+                                    $date=date_create($item->tgl_lahir);  
+                                    echo '                                        
+                                    <tr>
+                                        <td>'.$no.'</td>
+                                        <td>'.$item->nama_lengkap.'</td>
+                                        <td>'.$item->pendidikan.'</td>
+                                        <td>'.$item->tempat_lahir.', '.date_format($date,"d F Y").'</td>
+                                        <td>'.$item->jenis_kelamin.'</td>
+                                        <td>'.$item->posisi.'</td>
+                                        <td>
+                                            <button title="Detail Calon Pegawai" type="button" class="btn btn-primary ml-1 btn-sm mdl_detail" data-toggle="modal" data-target="#mdl_detail" data-id="'.$item->id_pegawai.'"><i class="fa fa-ellipsis-h"></i></button>
+                                            <button title="Edit Calon Pegawai" type="button" class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="'.$item->id_pegawai.'"><i class="fa fa-edit"></i></button>
+                                            <button title="Hapus Calon Pegawai" type="button" class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="'.$item->id_pegawai.'"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    ';
+                                    $no++;
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -67,42 +76,42 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('pegawai/store') ?>" method="post">
                                 <div class="form-group">
                                     <label class="required">Nama Lengkap</label>
-                                    <input class="form-control form-control-solid" type="text" placeholder="Masukan Nama Lengkap" />
+                                    <input class="form-control form-control-solid" type="text" name="nama_lengkap" placeholder="Masukan Nama Lengkap" />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Jenjang Pendidikan</label>
-                                    <select class="form-control form-control-solid" name="" id="" required>
+                                    <select class="form-control form-control-solid" name="pendidikan" id="" required>
                                         <option>Pilih Jenjang Pendidikan</option>
-                                        <option value="">Baik - Pendidikan Jenjang D3</option>
-                                        <option value="">Memenuhi - Pendidikan Jenjang D4/S1</option>
-                                        <option value="">Sangat Memenuhi - Pendidikan Jenjang S2</option>
+                                        <option value="Pendidikan Jenjang D3">Baik - Pendidikan Jenjang D3</option>
+                                        <option value="Pendidikan Jenjang D4/S1">Memenuhi - Pendidikan Jenjang D4/S1</option>
+                                        <option value="Pendidikan Jenjang S2">Sangat Memenuhi - Pendidikan Jenjang S2</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Tempat Lahir</label>
-                                    <input class="form-control form-control-solid" type="text" placeholder="Masukan Tempat Lahir" />
+                                    <input class="form-control form-control-solid" type="text" name="tempat_lahir" placeholder="Masukan Tempat Lahir" />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Tanggal Lahir</label>
-                                    <input class="form-control form-control-solid" type="text" id="tglLahir" placeholder="Masukan Tanggal Lahir" />
+                                    <input class="form-control form-control-solid" type="text" name="tgl_lahir" id="tglLahir" placeholder="Masukan Tanggal Lahir" />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Jenis Kelamin</label>
-                                    <select class="form-control form-control-solid" name="" id="">
-                                        <option value="">Laki-Laki</option>
-                                        <option value="">Perempuan</option>
+                                    <select class="form-control form-control-solid" name="jenis_kelamin" id="">
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Alamat</label>
-                                    <textarea class="form-control form-control-solid" name="" id="" cols="5" rows="5" placeholder="Masukan Alamat"></textarea>
+                                    <textarea class="form-control form-control-solid" name="alamat" id="" cols="5" rows="5" placeholder="Masukan Alamat"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Posisi Jabatan</label>
-                                    <input class="form-control form-control-solid" type="text" placeholder="Masukan Posisi Jabatan" />
+                                    <input class="form-control form-control-solid" type="text" name="posisi" placeholder="Masukan Posisi Jabatan" />
                                 </div>
                         </div>
                         <div class="modal-footer">
@@ -124,40 +133,41 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('pegawai/edit') ?>" method="post">
                                 <div class="form-group">
                                     <label class="required">Nama Lengkap</label>
-                                    <input class="form-control form-control-solid" type="text" value="Simon Kjaer" />
+                                    <input class="form-control form-control-solid" type="text" id="editNama" name="nama_lengkap" />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Pendidikan</label>
-                                    <input class="form-control form-control-solid" type="text" value="S1 - Pendidikan Jasmani" />
+                                    <input class="form-control form-control-solid" type="text" id="editPendidikan" name="pendidikan"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Tempat Lahir</label>
-                                    <input class="form-control form-control-solid" type="text" value="Blitar" />
+                                    <input class="form-control form-control-solid" type="text" id="editTempatLahir" name="tempat_lahir"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Tanggal Lahir</label>
-                                    <input class="form-control form-control-solid" id="edit_tglLahir" type="text" value="10 Oktober 1998" />
+                                    <input class="form-control form-control-solid" id="edit_tglLahir" type="text" name="tgl_lahir"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Jenis Kelamin</label>
-                                    <select class="form-control form-control-solid" name="" id="">
-                                        <option value="">Laki-Laki</option>
-                                        <option value="">Perempuan</option>
+                                    <select class="form-control form-control-solid" name="jenis_kelamin" id="editKelamin">
+                                        <option value="Laki-laki">Laki-laki</option>
+                                        <option value="Perempuan">Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Alamat</label>
-                                    <textarea class="form-control form-control-solid" name="" id="" cols="5" rows="5">Jl Permata Janggi</textarea>
+                                    <textarea class="form-control form-control-solid" name="alamat" id="editAlamat" cols="5" rows="5"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Posisi Jabatan</label>
-                                    <input class="form-control form-control-solid" type="text" value="Pegawai Honorer Olahraga" />
+                                    <input class="form-control form-control-solid" type="text" id="editPosisi" name="posisi"/>
                                 </div>
                         </div>
                         <div class="modal-footer">
+                            <input type="hidden" id="editId" name="id_pegawai">
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                             <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
                         </div>
@@ -176,13 +186,12 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
                                 <div class="row justify-content-start">
                                     <div class="col-5">
                                         <label class="font-weight-bolder ">Nama Lengkap</label>
                                     </div>
                                     <div class="col">
-                                        <p id="">Giri Sambo</p>
+                                        <p id="detNama"></p>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start">
@@ -190,7 +199,7 @@
                                         <label class="font-weight-bolder ">Jenjang Pendidikan</label>
                                     </div>
                                     <div class="col">
-                                        <p id="">S1</p>
+                                        <p id="detPendidikan"></p>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start">
@@ -198,7 +207,7 @@
                                         <label class="font-weight-bolder ">Tempat Lahir</label>
                                     </div>
                                     <div class="col">
-                                        <p id="">Blitar</p>
+                                        <p id="detTempatLahir"></p>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start">
@@ -206,7 +215,7 @@
                                         <label class="font-weight-bolder ">Tanggal Lahir</label>
                                     </div>
                                     <div class="col">
-                                        <p id="">08 Oktober 2912</p>
+                                        <p id="detTglLahir"></p>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start">
@@ -214,7 +223,7 @@
                                         <label class="font-weight-bolder ">Jenis Kelamin</label>
                                     </div>
                                     <div class="col">
-                                        <p id="">Laki - Laki</p>
+                                        <p id="detJenkel"></p>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start">
@@ -222,7 +231,7 @@
                                         <label class="font-weight-bolder ">Alamat</label>
                                     </div>
                                     <div class="col">
-                                        <p id="">Jl. Suwondo no 25 RT 01 RW 04 Blitar</p>
+                                        <p id="detAlamat"></p>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start">
@@ -230,15 +239,13 @@
                                         <label class="font-weight-bolder ">Posisi Jabatan</label>
                                     </div>
                                     <div class="col">
-                                        <p id="">Guru Honorer Olahraga</p>
+                                        <p id="detPosisi"></p>
                                     </div>
                                 </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
-                            <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
-                        </div>
-                        </form>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -252,11 +259,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?= site_url('') ?>" method="post">
+                        <form action="<?= site_url('pegawai/delete') ?>" method="post">
                             <div class="modal-body">
-                                <p>Apakah anda yakin ingin menghapus data pegawai <b>Simon Kjaer</b> dengan pendidikan <b>S1 - Pendidikan Jasmani</b> tersebut ?</p>
+                                <p>Apakah anda yakin ingin menghapus data pegawai <b><span id="deleteNama"></b> dengan pendidikan <b><span id="deletePendidikan"></b> tersebut ?</p>
                             </div>
                             <div class="modal-footer">
+                                <input type="hidden" id="deleteId" name="id_pegawai">
                                 <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</button>
                             </div>
@@ -289,4 +297,65 @@
         autoclose: true,
         todayHighlight: true,
     });
+</script>
+<script>
+    $('#TabelPegawai tbody').on('click', '.mdl_detail', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: "<?= site_url('pegawai/ajxGetPegawai') ?>",
+            type: "post",
+            dataType: 'json',
+            data: {
+                id_pegawai: id
+            },
+            success: res => {                
+                $('#detNama').html(res[0].nama_lengkap)
+                $('#detPendidikan').html(res[0].pendidikan)
+                $('#detTempatLahir').html(res[0].tempat_lahir)
+                $('#detTglLahir').html(res[0].tgl_lahir)
+                $('#detJenkel').html(res[0].jenis_kelamin)
+                $('#detAlamat').html(res[0].alamat)
+                $('#detPosisi').html(res[0].posisi)
+            }
+        })
+    })
+
+    $('#TabelPegawai tbody').on('click', '.mdl_edit', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: "<?= site_url('pegawai/ajxGetPegawai') ?>",
+            type: "post",
+            dataType: 'json',
+            data: {
+                id_pegawai: id
+            },
+            success: res => {                
+                $('#editNama').val(res[0].nama_lengkap)
+                $('#editPendidikan').val(res[0].pendidikan)
+                $('#editTempatLahir').val(res[0].tempat_lahir)
+                $('#edit_tglLahir').val(res[0].tgl_lahir)
+                $('#editKelamin').val(res[0].jenis_kelamin)
+                $('#editAlamat').val(res[0].alamat)
+                $('#editPosisi').val(res[0].posisi)
+                $('#editId').val(res[0].id_pegawai)
+            }
+        })
+    })
+
+    $('#TabelPegawai tbody').on('click', '.mdl_hapus', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: "<?= site_url('pegawai/ajxGetPegawai') ?>",
+            type: "post",
+            dataType: 'json',
+            data: {
+                id_pegawai: id
+            },
+            success: res => {                
+                $('#deleteNama').html(res[0].nama_lengkap)
+                $('#deletePendidikan').html(res[0].pendidikan)
+                $('#deleteId').val(res[0].id_pegawai)
+            }
+        })
+    })
 </script>

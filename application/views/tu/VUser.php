@@ -36,16 +36,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Simon Kjaer</td>
-                                <td>Kim Jong Ki</td>
-                                <td>Waka Akademik</td>
-                                <td>
-                                    <button class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="" type="button"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="" type="button"><i class="fa fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            <?php
+                                $no = 1;
+                                foreach($list as $item){
+                                    $jabatan = '';
+                                    if($item->jabatan == 1){
+                                        $jabatan = 'Kepala Sekolah';
+                                    }else if($item->jabatan == 2){
+                                        $jabatan = 'Waka Akademik';
+                                    }else if($item->jabatan == 3){
+                                        $jabatan = 'Staff Tata Usaha';
+                                    }
+                                    echo '
+                                    <tr>
+                                        <td>'.$no.'</td>
+                                        <td>'.$item->username.'</td>
+                                        <td>'.$item->nama_lengkap.'</td>
+                                        <td>'.$jabatan.'</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="'.$item->id_user.'" type="button"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="'.$item->id_user.'" type="button"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    ';
+                                    $no++;
+                                }
+                            ?>                            
                         </tbody>
                     </table>
                 </div>
@@ -62,27 +78,27 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('user/store') ?>" method="post">
                                 <div class="form-group">
                                     <label class="required">Nama Lengkap</label>
-                                    <input class="form-control form-control-solid" type="text" placeholder="Masukan Nama Lengkap" />
+                                    <input class="form-control form-control-solid" type="text" name="nama_lengkap" placeholder="Masukan Nama Lengkap" />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Username</label>
-                                    <input class="form-control form-control-solid" type="text" placeholder="Masukan Username" />
+                                    <input class="form-control form-control-solid" type="text" name="username" placeholder="Masukan Username" />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Posisi jabatan</label>
-                                    <select class="form-control form-control-solid" name="" id="">
+                                    <select class="form-control form-control-solid" name="jabatan" id="">
                                         <option value="">Pilih Posisi Jabatan</option>
-                                        <option value="">Staff Tata Usaha</option>
-                                        <option value="">Waka Akademik</option>
-                                        <option value="">Kepala Sekolah</option>
+                                        <option value="3">Staff Tata Usaha</option>
+                                        <option value="2">Waka Akademik</option>
+                                        <option value="1">Kepala Sekolah</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Password</label>
-                                    <input class="form-control form-control-solid" type="password" placeholder="Masukan Password" />
+                                    <input class="form-control form-control-solid" type="password" name="password" placeholder="Masukan Password" />
                                 </div>
                         </div>
                         <div class="modal-footer">
@@ -104,30 +120,31 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('user/edit') ?>" method="post">
                                 <div class="form-group">
                                     <label class="required">Nama Lengkap</label>
-                                    <input class="form-control form-control-solid" type="text" value="Murdiono" />
+                                    <input class="form-control form-control-solid" type="text" name="nama_lengkap" id="editUser_nama"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Username</label>
-                                    <input class="form-control form-control-solid" type="text" value="murkepsek" />
+                                    <input class="form-control form-control-solid" type="text" name="username" id="editUser_username" />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Posisi jabatan</label>
-                                    <select class="form-control form-control-solid" name="" id="">
+                                    <select class="form-control form-control-solid" name="jabatan" id="editUser_jabatan">
                                         <option value="">Pilih Posisi Jabatan</option>
-                                        <option value="">Staff Tata Usaha</option>
-                                        <option value="">Waka Akademik</option>
-                                        <option value="">Kepala Sekolah</option>
+                                        <option value="3">Staff Tata Usaha</option>
+                                        <option value="2">Waka Akademik</option>
+                                        <option value="1">Kepala Sekolah</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Password</label>
-                                    <input class="form-control form-control-solid" type="password" value="1sampaifsaw" />
+                                    <input class="form-control form-control-solid" type="password" id="editUser_password" name="password"/>
                                 </div>
                         </div>
                         <div class="modal-footer">
+                            <input type="hidden" id="editUser_id" name="id_user">
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                             <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
                         </div>
@@ -145,11 +162,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?= site_url('') ?>" method="post">
+                        <form action="<?= site_url('user/delete') ?>" method="post">
                             <div class="modal-body">
                                 <p>Apakah anda yakin ingin menghapus data tweet tersebut ?</p>
                             </div>
                             <div class="modal-footer">
+                                <input type="hidden" id="hapusUser_id" name="id_user">
                                 <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</button>
                             </div>
@@ -170,4 +188,29 @@
             fixedColumns: false
         });
     });
+</script>
+<script>
+    $('#TabelUser tbody').on('click', '.mdl_edit', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: "<?= site_url('user/ajxGetUser') ?>",
+            type: "post",
+            dataType: 'json',
+            data: {
+                id_user: id
+            },
+            success: res => {                
+                $('#editUser_nama').val(res[0].nama_lengkap)
+                $('#editUser_username').val(res[0].username)
+                $('#editUser_password').val(res[0].password)
+                $('#editUser_jabatan').val(res[0].jabatan)
+                $('#editUser_id').val(res[0].id_user)
+            }
+        })
+    })
+
+    $('#TabelUser tbody').on('click', '.mdl_hapus', function() {
+        const id = $(this).data("id")
+        $('#hapusUser_id').val(id)
+    })
 </script>
