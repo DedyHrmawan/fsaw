@@ -40,21 +40,59 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Simon Kjaer</td>
-                                <td>S1</td>
-                                <td>70</td>
-                                <td>cukup lancar</td>
-                                <td>71</td>
-                                <td>Sangat lancar</td>
-                                <!-- <td><span class="badge badge-primary mr-2">Sudah Dinilai</span></td> -->
-                                <td><span class="badge badge-danger mr-2">Belum Dinilai</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="" type="button"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="" type="button"><i class="fa fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            <?php
+                                $no = 1;
+                                foreach($list as $item){
+                                    $status = '';$pe = '';$tt = '';$ww = '';$pk = '';$bb = '';
+                                    if($item->status == 1){
+                                        $status = '<span class="badge badge-danger mr-2">Belum Dinilai</span>';
+                                    }else if($item->status == 2){
+                                        $status = '<span class="badge badge-primary mr-2">Sudah Dinilai</span></td>';
+                                    }
+                                    foreach($jenjang as $sk){
+                                        if($sk->bobot == $item->pendidikan_nilai){
+                                            $pe = $sk->jenis_kp;
+                                        }
+                                    }
+                                    foreach($tulis as $sk){
+                                        if($sk->bobot_ktl == $item->tes_tulis){
+                                            $tt = $sk->jenis_ktl;
+                                        }
+                                    }
+                                    foreach($wawancara as $sk){
+                                        if($sk->bobot_kw == $item->wawancara){
+                                            $ww = $sk->jenis_kw;
+                                        }
+                                    }
+                                    foreach($praktik as $sk){
+                                        if($sk->bobot_pk == $item->praktik_keahlian){
+                                            $pk = $sk->jenis_pk;
+                                        }
+                                    }
+                                    foreach($btq as $sk){
+                                        if($sk->bobot_btq == $item->btq){
+                                            $bb = $sk->jenis_btq;
+                                        }
+                                    }
+                                    echo '
+                                    <tr>
+                                        <td>'.$no.'</td>
+                                        <td>'.$item->nama_lengkap.'</td>
+                                        <td>'.$pe.'</td>
+                                        <td>'.$tt.'</td>
+                                        <td>'.$ww.'</td>
+                                        <td>'.$pk.'</td>
+                                        <td>'.$bb.'</td>
+                                        <td>'.$status.'</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="'.$item->id_pegawai.'" data-nama="'.$item->nama_lengkap.'" type="button"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="'.$item->id_pegawai.'" type="button"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    ';
+                                    $no++;
+                                }
+                            ?>                            
                         </tbody>
                     </table>
                 </div>
@@ -147,62 +185,69 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('nilaipegawai/edit') ?>" method="post">
                                 <div class="form-group">
                                     <label class="required">Nama Lengkap</label>
-                                    <input class="form-control form-control-solid" type="text" value="Simon Kjaer" readonly />
+                                    <input class="form-control form-control-solid" type="text" id="editNama" readonly />
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Jenjang Pendidikan</label>
-                                    <select class="form-control form-control-solid" name="" id="" required>
-                                        <option>Pilih Jenjang Pendidikan</option>
-                                        <option value="">Baik - Pendidikan Jenjang D3</option>
-                                        <option value="">Memenuhi - Pendidikan Jenjang D4/S1</option>
-                                        <option value="">Sangat Memenuhi - Pendidikan Jenjang S2</option>
+                                    <select class="form-control form-control-solid" name="pendidikan_nilai" id="editPendidikan" required>
+                                        <?php
+                                            foreach($jenjang as $item){
+                                                echo'
+                                                <option value="'.$item->bobot.'">'.$item->jenis_kp.'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Nilai Tes Tulis</label>
-                                    <select class="form-control form-control-solid" name="" id="" required>
-                                        <option>Pilih Nilai Tes Tulis</option>
-                                        <option value="">Sangat Rendah - Nilai 0-20</option>
-                                        <option value="">Rendah - Nilai 21-40</option>
-                                        <option value="">Cukup - Nilai 41-60</option>
-                                        <option value="">Tinggi - Nilai 61-80</option>
-                                        <option value="">Sangat Tinggi - Nilai 81-100</option>
+                                    <select class="form-control form-control-solid" name="tes_tulis" id="editTulis" required>
+                                        <?php
+                                            foreach($tulis as $item){
+                                                echo'
+                                                <option value="'.$item->bobot_ktl.'">'.$item->jenis_ktl.'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Nilai Wawancara</label>
-                                    <select class="form-control form-control-solid" name="" id="" required>
-                                        <option>Pilih Nilai Wawancara</option>
-                                        <option value="">Tidak Lancar - Wawancara Tidak Lancar</option>
-                                        <option value="">Cukup Lancar - Wawancara Cukup Lancar</option>
-                                        <option value="">Sangat Lancar - Wawancara Sangat Lancar</option>
+                                    <select class="form-control form-control-solid" name="wawancara" id="editWawancara" required>
+                                        <?php
+                                            foreach($wawancara as $item){
+                                                echo'
+                                                <option value="'.$item->bobot_kw.'">'.$item->jenis_kw.'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Nilai Praktik Keahlian</label>
-                                    <select class="form-control form-control-solid" name="" id="" required>
-                                        <option>Pilih Nilai Praktik Keahlian</option>
-                                        <option value="">Sangat Rendah - Nilai 0-20</option>
-                                        <option value="">Rendah - Nilai 21-40</option>
-                                        <option value="">Cukup - Nilai 41-60</option>
-                                        <option value="">Tinggi - Nilai 61-80</option>
-                                        <option value="">Sangat Tinggi - Nilai 81-100</option>
+                                    <select class="form-control form-control-solid" name="praktik_keahlian" id="editPraktik" required>
+                                        <?php
+                                            foreach($praktik as $item){
+                                                echo'
+                                                <option value="'.$item->bobot_pk.'">'.$item->jenis_pk.'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="required">Kemampuan BTQ</label>
-                                    <select class="form-control form-control-solid" name="" id="" required>
-                                        <option>Pilih Kemampuan BTQ</option>
-                                        <option value="">Tidak Lancar - Kemampuan BTQ Tidak Lancar</option>
-                                        <option value="">Cukup Lancar - Kemampuan BTQ Cukup Lancar</option>
-                                        <option value="">Sangat Lancar - Kemampuan BTQ Sangat Lancar</option>
+                                    <select class="form-control form-control-solid" name="btq" id="editBtq" required>
+                                        <?php
+                                            foreach($btq as $item){
+                                                echo'
+                                                <option value="'.$item->bobot_btq.'">'.$item->jenis_btq.'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                         </div>
                         <div class="modal-footer">
+                            <input type="hidden" id="editId" name="id_pegawai">
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                             <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
                         </div>
@@ -245,4 +290,32 @@
             fixedColumns: false
         });
     });
+</script>
+
+<script>
+    $('#TabelPenilaianPegawai tbody').on('click', '.mdl_edit', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: "<?= site_url('nilaipegawai/ajxGetNilai') ?>",
+            type: "post",
+            dataType: 'json',
+            data: {
+                id_pegawai: id
+            },
+            success: res => {                
+                $('#editNama').val(res[0].nama_lengkap)
+                $('#editTulis').val(res[0].tes_tulis)
+                $('#editPendidikan').val(res[0].pendidikan_nilai)
+                $('#editWawancara').val(res[0].wawancara)
+                $('#editPraktik').val(res[0].praktik_keahlian)
+                $('#editBtq').val(res[0].btq)
+                $('#editId').val(res[0].id_pegawai)
+            }
+        })
+    })
+
+    $('#TabelPenilaianPegawai tbody').on('click', '.mdl_hapus', function() {
+        const id = $(this).data("id")
+        $('#hapusUser_id').val(id)
+    })
 </script>

@@ -34,15 +34,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Baik</td>
-                                <td>0</td>
-                                <td>
-                                    <button class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="" type="button"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="" type="button"><i class="fa fa-trash"></i></button>
-                                </td>
-                            </tr>
+                            <?php
+                                $no = 1;
+                                foreach($list as $item){
+                                    echo '
+                                    <tr>
+                                        <td>'.$no.'</td>
+                                        <td>'.$item->jenis_pk.'</td>
+                                        <td>'.$item->bobot_pk.'</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="'.$item->id_pk.'" type="button"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="'.$item->id_pk.'" type="button"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    ';
+                                    $no++;
+                                }
+                            ?>                            
                         </tbody>
                     </table>
                 </div>
@@ -59,14 +67,14 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('kriteria-praktik/store') ?>" method="post">
                                 <div class="form-group">
                                     <label>Jenis Kriteria</label>
-                                    <input type="text" class="form-control form-control-solid" placeholder="Masukan Jenis Kriteria">
+                                    <input type="text" class="form-control form-control-solid" name="jenis_pk" placeholder="Masukan Jenis Kriteria">
                                 </div>
                                 <div class="form-group">
                                     <label>Bobot</label>
-                                    <input class="form-control form-control-solid" type="number" placeholder="Masukan Bobot" min="0" max="1" step=".01" />
+                                    <input class="form-control form-control-solid" type="number" name="bobot_pk" placeholder="Masukan Bobot" min="0" max="1" step=".01" />
                                 </div>
                         </div>
                         <div class="modal-footer">
@@ -88,17 +96,18 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('kriteria-praktik/edit') ?>" method="post">
                             <div class="form-group">
                                     <label>Jenis Kriteria</label>
-                                    <input type="text" class="form-control form-control-solid" value="Baik">
+                                    <input type="text" class="form-control form-control-solid" name="jenis_pk" id="editJenis">
                                 </div>
                                 <div class="form-group">
                                     <label>Bobot</label>
-                                    <input class="form-control form-control-solid" type="number" value="0" min="0" max="1" step=".01" />
+                                    <input class="form-control form-control-solid" type="number" name="bobot_pk" id="editBobot" min="0" max="1" step=".01" />
                                 </div>
                         </div>
                         <div class="modal-footer">
+                            <input type="hidden" id="editId" name="id_pk">
                             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                             <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
                         </div>
@@ -116,11 +125,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?= site_url('') ?>" method="post">
+                        <form action="<?= site_url('kriteria-praktik/delete') ?>" method="post">
                             <div class="modal-body">
                                 <p>Apakah anda yakin ingin menghapus kriteria tersebut ?</p>
                             </div>
                             <div class="modal-footer">
+                                <input type="hidden" id="deleteId" name="id_pk">
                                 <button type="button" class="btn btn-light" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash mr-1"></i>Hapus</button>
                             </div>
@@ -141,4 +151,27 @@
             fixedColumns: false
         });
     });
+</script>
+<script>
+    $('#TabelKriteriaPraktik tbody').on('click', '.mdl_edit', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: "<?= site_url('kriteria-praktik/ajxGetPraktik') ?>",
+            type: "post",
+            dataType: 'json',
+            data: {
+                id_pk: id
+            },
+            success: res => {                
+                $('#editJenis').val(res[0].jenis_pk)
+                $('#editBobot').val(res[0].bobot_pk)
+                $('#editId').val(res[0].id_pk)
+            }
+        })
+    })
+
+    $('#TabelKriteriaPraktik tbody').on('click', '.mdl_hapus', function() {
+        const id = $(this).data("id")
+        $('#deleteId').val(id)
+    })
 </script>

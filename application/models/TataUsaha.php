@@ -48,4 +48,19 @@ class TataUsaha extends CI_Model{
         $this->db->where($param)->delete('pegawai');
         return true;
     }
+    public function getTotalCP(){
+        $sql = "SELECT COUNT(id_pegawai) as TOTAL FROM pegawai";
+        $res = $this->db->query($sql)->result();
+        return $res; 
+    }
+    public function getTotalUser(){
+        $sql = "SELECT COUNT(id_user) as TOTAL FROM user";
+        $res = $this->db->query($sql)->result();
+        return $res; 
+    }
+    public function getTotalDt(){
+        $sql = "SELECT COUNT(id_pegawai) as TOTAL FROM pegawai WHERE status_pegawai=2";
+        $res = $this->db->query($sql)->result();
+        return $res; 
+    }
 }

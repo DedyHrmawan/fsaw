@@ -15,7 +15,7 @@
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
                                 <div class="small font-weight-bold text-danger mb-1">Calon Pegawai</div>
-                                <div class="h5">2000</div>
+                                <div class="h5"><?= $cp[0]->TOTAL ?></div>
                             </div>
                             <div class="ml-2"><i class="fas fa-percentage fa-2x text-gray-200"></i></div>
                         </div>
@@ -29,7 +29,7 @@
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
                                 <div class="small font-weight-bold text-cyan mb-1">Jumlah User</div>
-                                <div class="h5">2</div>
+                                <div class="h5"><?= $totuser[0]->TOTAL ?></div>
                             </div>
                             <div class="ml-2"><i class="fas fa-percentage fa-2x text-gray-200"></i></div>
                         </div>
@@ -42,8 +42,8 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="small font-weight-bold text-orange mb-1">Kriteria</div>
-                                <div class="h5">5 Kriteria</div>
+                                <div class="small font-weight-bold text-orange mb-1">Calon Diterima</div>
+                                <div class="h5"><?= $dt[0]->TOTAL ?></div>
                             </div>
                             <div class="ml-2"><i class="fas fa-percentage fa-2x text-gray-200"></i></div>
                         </div>
