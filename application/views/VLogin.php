@@ -32,19 +32,28 @@
                                     <!-- <div class="alert alert-danger" role="alert"> Username / password salah! </div> -->
                                 </div>
                                 <div class="card-body">
-                                    <form action="">
+                                    <?php
+                                    if ($this->session->flashdata('error_login')) {
+                                        echo '
+                                            <div class="alert alert-danger" role="alert">
+                                                ' . $this->session->flashdata('error_login') . '
+                                            </div>
+                                        ';
+                                    }
+                                    ?>
+                                    <form action="<?= site_url('login/auth') ?>" method="post">
                                         <div class="form-group">
                                             <label class="small mb-1 required" for="inputUsername">Username</label>
-                                            <input class="form-control py-4" id="inputUsername" type="text" placeholder="Masukan Username" required />
+                                            <input class="form-control py-4" id="inputUsername" type="text" placeholder="Masukan Username" name="username" required />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1 required" for="inputPassword">Password</label>
-                                            <input class="form-control py-4" id="inputPassword" type="password" placeholder="Masukan Password" required />
+                                            <input class="form-control py-4" id="inputPassword" type="password" placeholder="Masukan Password" name="password" required />
                                         </div>
                                         <!-- Form Group (login box)-->
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="auth-password-basic.html">Forgot Password?</a>
-                                            <a class="btn btn-primary" href="<?= site_url('dashboard-tu') ?>">Login</a>
+                                            <button type="submit" class="btn btn-primary">Login</button>
                                         </div>
                                     </form>
                                 </div>

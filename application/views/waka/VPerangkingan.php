@@ -18,7 +18,7 @@
             <div class="form-group ">
                 <div class="row mr-2 justify-content-end">
                     <div class="col-md-2  mt-2">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-download mr-2"></i>Cetak</button>
+                        <a href="<?= site_url('waka/downloadrank') ?>" type="button" class="btn btn-primary btn-block"><i class="fa fa-download mr-2"></i>Cetak</a>
                     </div>
                 </div>
             </div>
@@ -60,15 +60,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Simon Kjaer</td>
-                                                <td>S1</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($list as $item){
+                                                    echo '                                                        
+                                                    <tr>
+                                                        <td>'.$no.'</td>
+                                                        <td>'.$item->nama_lengkap.'</td>
+                                                        <td>'.$item->pendidikan_nilai.'</td>
+                                                        <td>'.$item->tes_tulis.'</td>
+                                                        <td>'.$item->wawancara.'</td>
+                                                        <td>'.$item->praktik_keahlian.'</td>
+                                                        <td>'.$item->btq.'</td>
+                                                    </tr>
+                                                    ';
+                                                    $no++;
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -116,15 +124,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Simon Kjaer</td>
-                                                <td>S1</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($list as $item){
+                                                    echo '                                                        
+                                                    <tr>
+                                                        <td>'.$no.'</td>
+                                                        <td>'.$item->nama_lengkap.'</td>
+                                                        <td>'.$item->pendidikan_nilai.'</td>
+                                                        <td>'.$item->tes_tulis.'</td>
+                                                        <td>'.$item->wawancara.'</td>
+                                                        <td>'.$item->praktik_keahlian.'</td>
+                                                        <td>'.$item->btq.'</td>
+                                                    </tr>
+                                                    ';
+                                                    $no++;
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -172,32 +188,40 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Simon Kjaer</td>
-                                                <td>S1</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($list as $item){
+                                                    echo '                                                        
+                                                    <tr>
+                                                        <td>'.$no.'</td>
+                                                        <td>'.$item->nama_lengkap.'</td>
+                                                        <td>'.$item->pendidikan_nilai.'</td>
+                                                        <td>'.$item->tes_tulis.'</td>
+                                                        <td>'.$item->wawancara.'</td>
+                                                        <td>'.$item->praktik_keahlian.'</td>
+                                                        <td>'.$item->btq.'</td>
+                                                    </tr>
+                                                    ';
+                                                    $no++;
+                                                }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <td colspan="2" class="font-weight-bolder">Nilai Max</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
+                                                <td><?= $maxmin[0]->pendidikanMax ?></td>
+                                                <td><?= $maxmin[0]->tulisMax ?></td>
+                                                <td><?= $maxmin[0]->wawancaraMax ?></td>
+                                                <td><?= $maxmin[0]->pkMax ?></td>
+                                                <td><?= $maxmin[0]->btqMax ?></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2" class="font-weight-bolder">Nilai Min</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
+                                                <td><?= $maxmin[0]->pendidikanMin ?></td>
+                                                <td><?= $maxmin[0]->tulisMin ?></td>
+                                                <td><?= $maxmin[0]->wawancaraMin ?></td>
+                                                <td><?= $maxmin[0]->pkMin ?></td>
+                                                <td><?= $maxmin[0]->btqMin ?></td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -246,15 +270,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Simon Kjaer</td>
-                                                <td>S1</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($list as $item){
+                                                    echo '
+                                                    <tr>
+                                                        <td>'.$no.'</td>
+                                                        <td>'.$item->nama_lengkap.'</td>
+                                                        <td>'.$maxmin[0]->pendidikanMax*$item->pendidikan_nilai.'</td>
+                                                        <td>'.$maxmin[0]->tulisMax*$item->tes_tulis.'</td>
+                                                        <td>'.$maxmin[0]->wawancaraMax*$item->wawancara.'</td>
+                                                        <td>'.$maxmin[0]->pkMax*$item->praktik_keahlian.'</td>
+                                                        <td>'.$maxmin[0]->btqMax*$item->btq.'</td>
+                                                    </tr>
+                                                    ';
+                                                    $no++;
+                                                }
+                                            ?>                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -302,15 +334,28 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Simon Kjaer</td>
-                                                <td>S1</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($list as $item){
+                                                    $pendidikan = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*20/100;
+                                                    $testulis = $maxmin[0]->tulisMax*$item->tes_tulis*20/100;
+                                                    $wawancara = $maxmin[0]->wawancaraMax*$item->wawancara*20/100;
+                                                    $pk = $maxmin[0]->pkMax*$item->praktik_keahlian*20/100;
+                                                    $btq = $maxmin[0]->btqMax*$item->btq*20/100;
+                                                    echo '
+                                                    <tr>
+                                                        <td>'.$no.'</td>
+                                                        <td>'.$item->nama_lengkap.'</td>
+                                                        <td>'.$pendidikan.'</td>
+                                                        <td>'.$testulis.'</td>
+                                                        <td>'.$wawancara.'</td>
+                                                        <td>'.$pk.'</td>
+                                                        <td>'.$btq.'</td>
+                                                    </tr>
+                                                    ';
+                                                    $no++;
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -359,17 +404,31 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Simon Kjaer</td>
-                                                <td>S1</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                
-                                                <td>0.1</td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($list as $item){
+                                                    $pendidikan = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*20/100;
+                                                    $testulis = $maxmin[0]->tulisMax*$item->tes_tulis*20/100;
+                                                    $wawancara = $maxmin[0]->wawancaraMax*$item->wawancara*20/100;
+                                                    $pk = $maxmin[0]->pkMax*$item->praktik_keahlian*20/100;
+                                                    $btq = $maxmin[0]->btqMax*$item->btq*20/100;
+                                                    $np = $pendidikan+$testulis+$wawancara+$pk+$btq;
+                                                    echo '                                                        
+                                                    <tr>
+                                                        <td>'.$no.'</td>
+                                                        <td>'.$item->nama_lengkap.'</td>
+                                                        <td>'.$pendidikan.'</td>
+                                                        <td>'.$testulis.'</td>
+                                                        <td>'.$wawancara.'</td>
+                                                        <td>'.$pk.'</td>
+                                                        <td>'.$btq.'</td>
+                                                        
+                                                        <td>'.$np.'</td>
+                                                    </tr>
+                                                    ';
+                                                    $no++;
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -418,17 +477,25 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Simon Kjaer</td>
-                                                <td>S1</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                <td>0.75</td>
-                                                
-                                                <td>0.1</td>
-                                            </tr>
+                                            <?php
+                                                $no = 1;
+                                                foreach($rank as $item){
+                                                    echo '                                                        
+                                                    <tr>
+                                                        <td>'.$no.'</td>
+                                                        <td>'.$item->nama_lengkap.'</td>
+                                                        <td>'.$item->na_pendidikan.'</td>
+                                                        <td>'.$item->na_testulis.'</td>
+                                                        <td>'.$item->na_wawancara.'</td>
+                                                        <td>'.$item->na_pk.'</td>
+                                                        <td>'.$item->na_btq.'</td>
+                                                        
+                                                        <td>'.$item->nilai_preferensi.'</td>
+                                                    </tr>
+                                                    ';
+                                                    $no++;
+                                                }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

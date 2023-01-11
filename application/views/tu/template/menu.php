@@ -11,7 +11,7 @@
         <i class="fas fa-user-secret ml-2 mr-2 fa-lg fa-fw"></i>
         Data User
     </a>
-    <a class="nav-link text-white" href="<?php echo site_url('login'); ?>">
+    <a class="nav-link text-white" href="<?php echo site_url('logout'); ?>">
         <i class="fas fa-sign-out-alt ml-2 mr-2 fa-lg fa-fw"></i>
         Logout
     </a>

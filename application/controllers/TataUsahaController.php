@@ -7,6 +7,9 @@ class TataUsahaController extends CI_Controller {
     {
         parent::__construct();
 		$this->load->model('TataUsaha');
+        if (isset($_SESSION['logged_in']) == FALSE || $this->session->userdata('akses') != "TU") {
+			redirect('logout');
+		};
     }
 
 	public function VPegawai()
@@ -81,8 +84,14 @@ class TataUsahaController extends CI_Controller {
 
 	public function VDashboardTu()
 	{
+        $cp = $this->TataUsaha->getTotalCP();
+        $totuser = $this->TataUsaha->getTotalUser();
+        $dt = $this->TataUsaha->getTotalDt();
 		$data = array(
-            'title' => 'Dashboard Tata Usaha - SPK Pegawai Honorer MAN 2 Kediri'
+            'title' => 'Dashboard Tata Usaha - SPK Pegawai Honorer MAN 2 Kediri',
+            'cp' => $cp,
+            'totuser' => $totuser,
+            'dt' => $dt
         );	
 		$this->template->tu('tu/VDashboard', $data);
 	}

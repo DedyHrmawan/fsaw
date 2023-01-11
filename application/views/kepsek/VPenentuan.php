@@ -18,7 +18,7 @@
             <div class="form-group ">
                 <div class="row mr-2 justify-content-end">
                     <div class="col-md-2  mt-2">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-download mr-2"></i>Cetak</button>
+                        <a href="<?= site_url('downloadPenentuan') ?>" type="button" class="btn btn-primary btn-block"><i class="fa fa-download mr-2"></i>Cetak</a>
                     </div>
                 </div>
             </div>
@@ -36,18 +36,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Simon Kjaer</td>
-                                <td>0.90</td>
-                                <!-- <td><span class="badge badge-primary mr-2">Diterima</span></td> -->
-                                <td><span class="badge badge-light mr-2">Tidak Diterima</span></td>
-                                <td>
-                                    <button title="Detail Calon Pegawai" type="button" class="btn btn-primary ml-1 btn-sm mdl_detail" data-toggle="modal" data-target="#mdl_detail" data-id=""><i class="fa fa-ellipsis-h"></i></button>
-                                    <button title="Penentuan Calon Pegawai" type="button" class="btn btn-sm btn-yellow m-1 mdl_penentuan" data-toggle="modal" data-target="#mdl_penentuan" data-id=""><i class="fa fa-user-plus"></i></button>
-
-                                </td>
-                            </tr>
+                            <?php
+                                $no = 1;
+                                foreach($list as $item){
+                                    $status = '';
+                                    if($item->status_pegawai == 1){
+                                        $status = '<span class="badge badge-warning mr-2">Belum Diterima</span>';
+                                    }else if($item->status_pegawai == 2){
+                                        $status = '<span class="badge badge-primary mr-2">Diterima</span>';
+                                    }
+                                    echo '
+                                    <tr>
+                                        <td>'.$no.'</td>
+                                        <td>'.$item->nama_lengkap.'</td>
+                                        <td>'.$item->nilai_preferensi.'</td>
+                                        <td>'.$status.'</td>
+                                        <td>
+                                            <button title="Detail Calon Pegawai" type="button" class="btn btn-primary ml-1 btn-sm mdl_detail" data-toggle="modal" data-target="#mdl_detail" data-id="'.$item->id_pegawai.'"><i class="fa fa-ellipsis-h"></i></button>
+                                            <button title="Penentuan Calon Pegawai" type="button" class="btn btn-sm btn-yellow m-1 mdl_penentuan" data-toggle="modal" data-target="#mdl_penentuan" data-id="'.$item->id_pegawai.'" data-nama="'.$item->nama_lengkap.'" data-np="'.$item->nilai_preferensi.'"><i class="fa fa-user-plus"></i></button>
+                                        </td>
+                                    </tr>
+                                    ';
+                                    $no++;
+                                }
+                            ?>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -60,13 +73,17 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+                            <form action="<?= site_url('penentuan/terima') ?>" method="post">
                             <div class="modal-body">
-                                <p>Apakah anda yakin ingin menerima pegawai <b>Simon Kjaer</b> dengan nilai preferensi <b>0.92</b> tersebut ?</p>
+                                <p>Apakah anda yakin ingin menerima pegawai <b><span id="editNama"></b> dengan nilai preferensi <b><span id="editNP"></b> tersebut ?</p>
                             </div>
                             <div class="modal-footer">
+                                <input type="hidden" id="editId" name="id_pegawai">
+                                <input type="hidden" name="status_pegawai" value="2">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -87,7 +104,7 @@
                                             <label class="font-weight-bolder ">Nama Lengkap</label>
                                         </div>
                                         <div class="col">
-                                            <p id="">Giri Sambo</p>
+                                            <p><span id="detNama"></p>
                                         </div>
                                     </div>
                                     <div class="row justify-content-start">
@@ -95,7 +112,7 @@
                                             <label class="font-weight-bolder ">Jenjang Pendidikan</label>
                                         </div>
                                         <div class="col">
-                                            <p id="">S1</p>
+                                            <p id="detPendidikan">S1</p>
                                         </div>
                                     </div>
                                     <div class="row justify-content-start">
@@ -103,7 +120,7 @@
                                             <label class="font-weight-bolder ">Tempat Lahir</label>
                                         </div>
                                         <div class="col">
-                                            <p id="">Blitar</p>
+                                            <p id="detTempatLahir">Blitar</p>
                                         </div>
                                     </div>
                                     <div class="row justify-content-start">
@@ -111,7 +128,7 @@
                                             <label class="font-weight-bolder ">Tanggal Lahir</label>
                                         </div>
                                         <div class="col">
-                                            <p id="">08 Oktober 2912</p>
+                                            <p id="detTglLahir">08 Oktober 2912</p>
                                         </div>
                                     </div>
                                     <div class="row justify-content-start">
@@ -119,7 +136,7 @@
                                             <label class="font-weight-bolder ">Jenis Kelamin</label>
                                         </div>
                                         <div class="col">
-                                            <p id="">Laki - Laki</p>
+                                            <p id="detJenkel">Laki - Laki</p>
                                         </div>
                                     </div>
                                     <div class="row justify-content-start">
@@ -127,7 +144,7 @@
                                             <label class="font-weight-bolder ">Alamat</label>
                                         </div>
                                         <div class="col">
-                                            <p id="">Jl. Suwondo no 25 RT 01 RW 04 Blitar</p>
+                                            <p id="detAlamat">Jl. Suwondo no 25 RT 01 RW 04 Blitar</p>
                                         </div>
                                     </div>
                                     <div class="row justify-content-start">
@@ -135,13 +152,12 @@
                                             <label class="font-weight-bolder ">Posisi Jabatan</label>
                                         </div>
                                         <div class="col">
-                                            <p id="">Guru Honorer Olahraga</p>
+                                            <p id="detPosisi">Guru Honorer Olahraga</p>
                                         </div>
                                     </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
-                                <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
                             </div>
                             </form>
                         </div>
@@ -161,4 +177,35 @@
             fixedColumns: false
         });
     });
+</script>
+<script>
+    $('#TabelPenentuan tbody').on('click', '.mdl_detail', function() {
+        const id = $(this).data('id');
+        $.ajax({
+            url: "<?= site_url('kepsek/ajxGetPegawai') ?>",
+            type: "post",
+            dataType: 'json',
+            data: {
+                id_pegawai: id
+            },
+            success: res => {                
+                $('#detNama').html(res[0].nama_lengkap)
+                $('#detPendidikan').html(res[0].pendidikan)
+                $('#detTempatLahir').html(res[0].tempat_lahir)
+                $('#detTglLahir').html(res[0].tgl_lahir)
+                $('#detJenkel').html(res[0].jenis_kelamin)
+                $('#detAlamat').html(res[0].alamat)
+                $('#detPosisi').html(res[0].posisi)
+            }
+        })
+    })
+
+    $('#TabelPenentuan tbody').on('click', '.mdl_penentuan', function() {
+        const id = $(this).data("id")
+        const nama = $(this).data("nama")
+        const np = $(this).data("np")
+        $('#editNama').html(nama)
+        $('#editNP').html(np)
+        $('#editId').val(id)
+    })
 </script>
