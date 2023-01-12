@@ -175,7 +175,7 @@ class Waka extends CI_Model{
         return $res;
     }
     public function getPerankingan(){
-        $sql = "SELECT p.*,s.id_penilaian,s.pendidikan_nilai,s.tes_tulis,s.wawancara,s.praktik_keahlian,s.btq,s.na_pendidikan,s.na_testulis,s.na_wawancara,s.na_pk,s.na_btq,s.nilai_preferensi FROM pegawai p LEFT JOIN penilaian_pegawai s ON p.id_pegawai = s.id_pegawai WHERE p.status = 2 ORDER BY s.nilai_preferensi DESC";
+        $sql = "SELECT p.*,s.id_penilaian,s.pendidikan_nilai,s.tes_tulis,s.wawancara,s.praktik_keahlian,s.btq,s.na_pendidikan,s.na_testulis,s.na_wawancara,s.na_pk,s.na_btq,s.nilai_preferensi FROM pegawai p LEFT JOIN penilaian_pegawai s ON p.id_pegawai = s.id_pegawai WHERE p.status = 2 ORDER BY s.nilai_preferensi DESC, p.nama_lengkap ASC";
         $res = $this->db->query($sql)->result();
         return $res;
     }
