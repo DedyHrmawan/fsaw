@@ -36,7 +36,7 @@
                                 <th>Nilai Praktik keahlian</th>
                                 <th>Kemampuan BTQ</th>
                                 <th>Status</th>
-                                <th width=13%>Aksi</th>
+                                <th width=10%>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,7 +86,6 @@
                                         <td>'.$status.'</td>
                                         <td>
                                             <button class="btn btn-sm btn-yellow m-1 mdl_edit" data-toggle="modal" data-target="#mdl_edit" data-id="'.$item->id_pegawai.'" data-nama="'.$item->nama_lengkap.'" type="button"><i class="fa fa-edit"></i></button>
-                                            <button class="btn btn-sm btn-danger m-1 mdl_hapus" data-toggle="modal" data-target="#mdl_hapus" data-id="'.$item->id_pegawai.'" type="button"><i class="fa fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     ';
