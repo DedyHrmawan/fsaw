@@ -29,8 +29,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Lengkap</th>
                                 <th>Username</th>
+                                <th>Nama Lengkap</th>
                                 <th>Posisi Jabatan</th>
                                 <th width=13%>Aksi</th>
                             </tr>
