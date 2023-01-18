@@ -85,9 +85,9 @@
                                     <label class="required">Jenjang Pendidikan</label>
                                     <select class="form-control form-control-solid" name="pendidikan" id="" required>
                                         <option>Pilih Jenjang Pendidikan</option>
-                                        <option value="Pendidikan Jenjang D3">Baik - Pendidikan Jenjang D3</option>
-                                        <option value="Pendidikan Jenjang D4/S1">Memenuhi - Pendidikan Jenjang D4/S1</option>
-                                        <option value="Pendidikan Jenjang S2">Sangat Memenuhi - Pendidikan Jenjang S2</option>
+                                        <option value="Pendidikan Jenjang D3">Pendidikan Jenjang D3</option>
+                                        <option value="Pendidikan Jenjang D4/S1">Pendidikan Jenjang D4/S1</option>
+                                        <option value="Pendidikan Jenjang S2">Pendidikan Jenjang S2</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -142,6 +142,15 @@
                                     <label class="required">Pendidikan</label>
                                     <input class="form-control form-control-solid" type="text" id="editPendidikan" name="pendidikan"/>
                                 </div>
+                                <!-- <div class="form-group">
+                                    <label class="required">Jenjang Pendidikan</label>
+                                    <select class="form-control form-control-solid" id="" name=""  >
+                                        <option>Pilih Jenjang Pendidikan</option>
+                                        <option value="Pendidikan Jenjang D3">Pendidikan Jenjang D3</option>
+                                        <option value="Pendidikan Jenjang D4/S1">Pendidikan Jenjang D4/S1</option>
+                                        <option value="Pendidikan Jenjang S2">Pendidikan Jenjang S2</option>
+                                    </select>
+                                </div> -->
                                 <div class="form-group">
                                     <label class="required">Tempat Lahir</label>
                                     <input class="form-control form-control-solid" type="text" id="editTempatLahir" name="tempat_lahir"/>
