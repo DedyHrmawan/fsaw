@@ -39,11 +39,13 @@
                             <?php
                             $no = 1;
                             foreach ($list as $item) {
-                                $status = '';
+                                $status = '';$baten = '';
                                 if ($item->status_pegawai == 1) {
                                     $status = '<span class="badge badge-warning mr-2">Belum Diterima</span>';
+                                    $baten = '<button title="Penerimaan Calon Pegawai" type="button" class="btn btn-sm btn-yellow m-1 mdl_penentuan" data-toggle="modal" data-target="#mdl_penentuan" data-id="' . $item->id_pegawai . '" data-nama="' . $item->nama_lengkap . '" data-np="' . $item->nilai_preferensi . '"><i class="fa fa-user-plus"></i></button>';
                                 } else if ($item->status_pegawai == 2) {
                                     $status = '<span class="badge badge-primary mr-2">Diterima</span>';
+                                    $baten = '<button title="Batalkan Penerimaan Calon Pegawai" type="button" class="btn btn-sm btn-danger m-1 mdl_batal" data-toggle="modal" data-target="#mdl_batal" data-id="' . $item->id_pegawai . '" data-nama="' . $item->nama_lengkap . '" data-np="' . $item->nilai_preferensi . '"><i class="fa fa-times-circle"></i></button>';
                                 }
                                 echo '
                                     <tr>
@@ -53,8 +55,7 @@
                                         <td>' . $status . '</td>
                                         <td>
                                             <button title="Detail Calon Pegawai" type="button" class="btn btn-primary ml-1 btn-sm mdl_detail" data-toggle="modal" data-target="#mdl_detail" data-id="' . $item->id_pegawai . '"><i class="fa fa-ellipsis-h"></i></button>
-                                            <button title="Penerimaan Calon Pegawai" type="button" class="btn btn-sm btn-yellow m-1 mdl_penentuan" data-toggle="modal" data-target="#mdl_penentuan" data-id="' . $item->id_pegawai . '" data-nama="' . $item->nama_lengkap . '" data-np="' . $item->nilai_preferensi . '"><i class="fa fa-user-plus"></i></button>
-                                            <button title="Batalkan Penerimaan Calon Pegawai" type="button" class="btn btn-sm btn-danger m-1 mdl_batal" data-toggle="modal" data-target="#mdl_batal" data-id="" data-nama="" data-np=""><i class="fa fa-times-circle"></i></button>
+                                            '.$baten.'  
                                         </td>
                                     </tr>
                                     ';
@@ -99,13 +100,13 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?= site_url('') ?>" method="post">
+                            <form action="<?= site_url('penentuan/terima') ?>" method="post">
                                 <div class="modal-body">
-                                    <p>Apakah anda yakin ingin membatalkan penerimaan pegawai <b>Dedy Ganteng SPDI</b> dengan nilai preferensi <b>0.99</b> tersebut ?</p>
+                                    <p>Apakah anda yakin ingin membatalkan penerimaan pegawai <b><span id="batalNama"></b> dengan nilai preferensi <b><span id="batalNP"></b> tersebut ?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" id="editId" name="id_pegawai">
-                                    <input type="hidden" name="status_pegawai" value="2">
+                                    <input type="hidden" id="batalId" name="id_pegawai">
+                                    <input type="hidden" name="status_pegawai" value="1">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times mr-1"></i>Batal</button>
                                     <button type="submit" class="btn btn-success"><i class="fa fa-check mr-1"></i>Simpan</button>
                                 </div>
@@ -233,5 +234,14 @@
         $('#editNama').html(nama)
         $('#editNP').html(np)
         $('#editId').val(id)
+    })
+
+    $('#TabelPenentuan tbody').on('click', '.mdl_batal', function() {
+        const id = $(this).data("id")
+        const nama = $(this).data("nama")
+        const np = $(this).data("np")
+        $('#batalNama').html(nama)
+        $('#batalNP').html(np)
+        $('#batalId').val(id)
     })
 </script>

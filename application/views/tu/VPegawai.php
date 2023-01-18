@@ -138,19 +138,18 @@
                                     <label class="required">Nama Lengkap</label>
                                     <input class="form-control form-control-solid" type="text" id="editNama" name="nama_lengkap" />
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="required">Pendidikan</label>
                                     <input class="form-control form-control-solid" type="text" id="editPendidikan" name="pendidikan"/>
-                                </div>
-                                <!-- <div class="form-group">
+                                </div> -->
+                                <div class="form-group">
                                     <label class="required">Jenjang Pendidikan</label>
-                                    <select class="form-control form-control-solid" id="" name=""  >
-                                        <option>Pilih Jenjang Pendidikan</option>
+                                    <select class="form-control form-control-solid" id="editPendidikan" name="pendidikan"  >
                                         <option value="Pendidikan Jenjang D3">Pendidikan Jenjang D3</option>
                                         <option value="Pendidikan Jenjang D4/S1">Pendidikan Jenjang D4/S1</option>
                                         <option value="Pendidikan Jenjang S2">Pendidikan Jenjang S2</option>
                                     </select>
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <label class="required">Tempat Lahir</label>
                                     <input class="form-control form-control-solid" type="text" id="editTempatLahir" name="tempat_lahir"/>
