@@ -39,26 +39,19 @@
         <button class="btn btn-icon text-white btn-transparent-white ml-n5 " id="sidebarToggle" href="assets/#"><i data-feather="menu"></i></button>
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown no-caret mr-2 dropdown-user">
-                <div class="btn text-white"  id="navbarDropdownUserImage" href="assets/javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="assets/javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" /> <i data-feather="user" class="text-white"></i></a>
-                    Waka Akademik
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
-                        <h6 class="dropdown-header d-flex align-items-center">
-                            <i data-feather="user"></i>
-                            <div class="dropdown-user-details">
-                                <div class="dropdown-user-details-name">Waka Akademik</div>
-                            </div>
-                        </h6>
-                        <div class="dropdown-divider"></div>
-                        <!-- <a class="dropdown-item" href="<?php echo site_url('Admin/ChangePassword'); ?>">
-                            <div class="dropdown-item-icon"><i data-feather="key"></i></div>
-                            Change Password
-                        </a> -->
-                        <a type="button" class="dropdown-item" data-toggle="modal" data-target="#KonfirmasiModal">
-                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                            Logout
-                        </a>
-                    </div>
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="assets/javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" /> <i data-feather="user"></i></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                    <h6 class="dropdown-header d-flex align-items-center">
+                        <i data-feather="user"></i>
+                        <div class="dropdown-user-details">
+                            <div class="dropdown-user-details-name">Waka Akademik</div>
+                        </div>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <a type="button" class="dropdown-item" data-toggle="modal" data-target="#KonfirmasiModal">
+                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                        Logout
+                    </a>
                 </div>
             </li>
         </ul>
@@ -74,7 +67,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h5>Apakah anda yakin keluar ? </h5>
+                    <h5>Apakah anda yakin ingin keluar ? </h5>
                 </div>
                 <div class="modal-footer">
                     <a href="<?= site_url('logout') ?>" type="button" class="btn btn-danger"><i class="fa fa-sign-out-alt mr-1"></i>Keluar</a>

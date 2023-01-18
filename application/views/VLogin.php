@@ -52,7 +52,7 @@
                                         </div>
                                         <!-- Form Group (login box)-->
                                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            <a class="small" href="auth-password-basic.html">Forgot Password?</a>
+                                            <span class="small"></span>
                                             <button type="submit" class="btn btn-primary">Login</button>
                                         </div>
                                     </form>
