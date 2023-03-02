@@ -62,14 +62,16 @@ class WakaController extends CI_Controller {
             $this->db->where('id_pegawai', $param['id_pegawai'])->update('pegawai', ['status' => 2]);
         }     
 
-        $dataPenilaian = $this->Waka->getAllPenilaian();        
-        $maxmin = $this->Waka->getMaxMin();
+        $dataPenilaian  = $this->Waka->getAllPenilaian();        
+        $maxmin         = $this->Waka->getMaxMin();
+        $bobot          = $this->Waka->getBobot();
+
         foreach($dataPenilaian as $item){
-            $pendidikan     = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*20/100;
-            $testulis       = $maxmin[0]->tulisMax*$item->tes_tulis*20/100;
-            $wawancara      = $maxmin[0]->wawancaraMax*$item->wawancara*20/100;
-            $pk             = $maxmin[0]->pkMax*$item->praktik_keahlian*20/100;
-            $btq            = $maxmin[0]->btqMax*$item->btq*20/100;
+            $pendidikan     = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*$bobot->bobot_pendidikan/100;
+            $testulis       = $maxmin[0]->tulisMax*$item->tes_tulis*$bobot->bobot_tulis/100;
+            $wawancara      = $maxmin[0]->wawancaraMax*$item->wawancara*$bobot->bobot_wawancara/100;
+            $pk             = $maxmin[0]->pkMax*$item->praktik_keahlian*$bobot->bobot_praktik/100;
+            $btq            = $maxmin[0]->btqMax*$item->btq*$bobot->bobot_btq/100;
             $np             = $pendidikan+$testulis+$wawancara+$pk+$btq;
 
             $update['id_pegawai']       = $item->id_pegawai;
@@ -263,14 +265,44 @@ class WakaController extends CI_Controller {
         $list       = $this->Waka->getAllPegawaiRank();
         $maxmin     = $this->Waka->getMaxMin();
         $ranking    = $this->Waka->getPerankingan();
+        $bobot      = $this->Waka->getBobot();
 		$data = array(
             'title' => 'Perhitungan Perangkingan - SPK Pegawai Honorer MAN 2 Kediri',
             'list' => $list,
             'maxmin' => $maxmin,
-            'rank' => $ranking
+            'rank' => $ranking,
+            'bobot' => $bobot
         );	
 		$this->template->waka('waka/VPerangkingan', $data);
 	}
+    public function simpanbobot(){
+        $data = $_POST;
+        $this->Waka->updateBobot($data);
+
+        $dataPenilaian  = $this->Waka->getAllPenilaian();        
+        $maxmin         = $this->Waka->getMaxMin();
+        $bobot          = $this->Waka->getBobot();
+
+        foreach($dataPenilaian as $item){
+            $pendidikan     = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*$bobot->bobot_pendidikan/100;
+            $testulis       = $maxmin[0]->tulisMax*$item->tes_tulis*$bobot->bobot_tulis/100;
+            $wawancara      = $maxmin[0]->wawancaraMax*$item->wawancara*$bobot->bobot_wawancara/100;
+            $pk             = $maxmin[0]->pkMax*$item->praktik_keahlian*$bobot->bobot_praktik/100;
+            $btq            = $maxmin[0]->btqMax*$item->btq*$bobot->bobot_btq/100;
+            $np             = $pendidikan+$testulis+$wawancara+$pk+$btq;
+
+            $update['id_pegawai']       = $item->id_pegawai;
+            $update['na_pendidikan']    = $pendidikan;
+            $update['na_testulis']      = $testulis;
+            $update['na_wawancara']     = $wawancara;
+            $update['na_pk']            = $pk;
+            $update['na_btq']           = $btq;
+            $update['nilai_preferensi'] = $np;
+            $this->Waka->updatePenilaian($update);
+        }
+
+        redirect('perangkingan');
+    }
 
     public function downloadPdf()
     {
@@ -314,7 +346,8 @@ class WakaController extends CI_Controller {
 		
 		// ---------------------------------------------------------
         $dataString = "";      
-        $ranking = $this->Waka->getPerankingan();
+        $ranking = $this->Waka->getPerankingan();        
+        $bobot   = $this->Waka->getBobot();
         $no = 1;
         foreach($ranking as $item){
             
@@ -361,11 +394,11 @@ class WakaController extends CI_Controller {
                         <th class="border">Benefit</th> 
                     </tr>
                     <tr class="text-center">
-                        <th>20%</th>
-                        <th>20%</th>
-                        <th>20%</th>
-                        <th>20%</th>
-                        <th class="border">20%</th>
+                        <th>$bobot->bobot_pendidikan%</th>
+                        <th>$bobot->bobot_tulis%</th>
+                        <th>$bobot->bobot_wawancara%</th>
+                        <th>$bobot->bobot_praktik%</th>
+                        <th class="border">$bobot->bobot_btq%</th>
                     </tr>
                     <tr class="text-center">
                         <th>Jenjang Pendidikan</th>

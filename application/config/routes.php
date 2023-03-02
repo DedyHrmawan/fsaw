@@ -118,3 +118,4 @@ $route['dashboard-kepsek']      = 'KepsekController/VDashboardKepsek';
 $route['downloadrank']          = 'KepsekController/downloadPdf';
 $route['downloadPenentuan']     = 'KepsekController/downloadPenentuan';
 $route['waka/downloadrank']     = 'WakaController/downloadPdf';
+$route['waka/simpanbobot']      = 'WakaController/simpanbobot';

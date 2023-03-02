@@ -18,11 +18,13 @@ class KepsekController extends CI_Controller {
         $cp = $this->TataUsaha->getTotalCP();
         $totuser = $this->TataUsaha->getTotalUser();
         $dt = $this->TataUsaha->getTotalDt();
+        $rk = $this->TataUsaha->getTotalRekom();
 		$data = array(
             'title' => 'Dashboard Kepala Sekolah - SPK Pegawai Honorer MAN 2 Kediri',
             'cp' => $cp,
             'totuser' => $totuser,
-            'dt' => $dt
+            'dt' => $dt,
+            'rk' => $rk
         );	
 		$this->template->kepsek('kepsek/VDashboard', $data);
 	}
@@ -32,11 +34,13 @@ class KepsekController extends CI_Controller {
         $list       = $this->Waka->getAllPegawaiRank();
         $maxmin     = $this->Waka->getMaxMin();
         $ranking    = $this->Waka->getPerankingan();
+        $bobot      = $this->Waka->getBobot();
 		$data = array(
             'title' => 'Hasil Perangkingan - SPK Pegawai Honorer MAN 2 Kediri',
             'list' => $list,
             'maxmin' => $maxmin,
-            'rank' => $ranking
+            'rank' => $ranking,
+            'bobot' => $bobot
         );	
 		$this->template->kepsek('kepsek/VRanking', $data);
 	}
@@ -56,6 +60,7 @@ class KepsekController extends CI_Controller {
 
         redirect('penentuan');
     }
+
     public function ajxGetPegawai(){
         $data['filter'] = 'id_pegawai = '.$_POST['id_pegawai'];
         echo json_encode($this->TataUsaha->getPegawai($data));
@@ -102,7 +107,8 @@ class KepsekController extends CI_Controller {
 		
 		// ---------------------------------------------------------
         $dataString = "";      
-        $ranking = $this->Waka->getPerankingan();
+        $ranking = $this->Waka->getPerankingan();       
+        $bobot   = $this->Waka->getBobot();
         $no = 1;
         foreach($ranking as $item){
             
@@ -149,11 +155,11 @@ class KepsekController extends CI_Controller {
                         <th class="border">Benefit</th> 
                     </tr>
                     <tr class="text-center">
-                        <th>20%</th>
-                        <th>20%</th>
-                        <th>20%</th>
-                        <th>20%</th>
-                        <th class="border">20%</th>
+                        <th>$bobot->bobot_pendidikan%</th>
+                        <th>$bobot->bobot_tulis%</th>
+                        <th>$bobot->bobot_wawancara%</th>
+                        <th>$bobot->bobot_praktik%</th>
+                        <th class="border">$bobot->bobot_btq%</th>
                     </tr>
                     <tr class="text-center">
                         <th>Jenjang Pendidikan</th>

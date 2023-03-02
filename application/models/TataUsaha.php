@@ -58,6 +58,11 @@ class TataUsaha extends CI_Model{
         $res = $this->db->query($sql)->result();
         return $res; 
     }
+    public function getTotalRekom(){
+        $sql = "SELECT COUNT(pe.id_pegawai) as TOTAL FROM pegawai pe, penilaian_pegawai pn WHERE pe.id_pegawai = pn.id_pegawai AND nilai_preferensi >= 0.8";
+        $res = $this->db->query($sql)->result();
+        return $res; 
+    }
     public function getTotalDt(){
         $sql = "SELECT COUNT(id_pegawai) as TOTAL FROM pegawai WHERE status_pegawai=2";
         $res = $this->db->query($sql)->result();
