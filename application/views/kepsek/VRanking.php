@@ -109,11 +109,11 @@
                                                 <th>Benefit</th>
                                             </tr>
                                             <tr class="text-center">
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
+                                                <th><?= $bobot->bobot_pendidikan ?>%</th>
+                                                <th><?= $bobot->bobot_tulis ?>%</th>
+                                                <th><?= $bobot->bobot_wawancara ?>%</th>
+                                                <th><?= $bobot->bobot_praktik ?>%</th>
+                                                <th><?= $bobot->bobot_btq ?>%</th>
                                             </tr>
                                             <tr class="text-center">
                                                 <th>Jenjang Pendidikan</th>
@@ -173,11 +173,11 @@
                                                 <th>Benefit</th>
                                             </tr>
                                             <tr class="text-center">
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
+                                                <th><?= $bobot->bobot_pendidikan ?>%</th>
+                                                <th><?= $bobot->bobot_tulis ?>%</th>
+                                                <th><?= $bobot->bobot_wawancara ?>%</th>
+                                                <th><?= $bobot->bobot_praktik ?>%</th>
+                                                <th><?= $bobot->bobot_btq ?>%</th>
                                             </tr>
                                             <tr class="text-center">
                                                 <th>Jenjang Pendidikan</th>
@@ -255,11 +255,11 @@
                                                 <th>Benefit</th>
                                             </tr>
                                             <tr class="text-center">
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
+                                                <th><?= $bobot->bobot_pendidikan ?>%</th>
+                                                <th><?= $bobot->bobot_tulis ?>%</th>
+                                                <th><?= $bobot->bobot_wawancara ?>%</th>
+                                                <th><?= $bobot->bobot_praktik ?>%</th>
+                                                <th><?= $bobot->bobot_btq ?>%</th>
                                             </tr>
                                             <tr class="text-center">
                                                 <th>Jenjang Pendidikan</th>
@@ -286,7 +286,7 @@
                                                     ';
                                                     $no++;
                                                 }
-                                            ?> 
+                                            ?>                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -319,11 +319,11 @@
                                                 <th>Benefit</th>
                                             </tr>
                                             <tr class="text-center">
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
+                                                <th><?= $bobot->bobot_pendidikan ?>%</th>
+                                                <th><?= $bobot->bobot_tulis ?>%</th>
+                                                <th><?= $bobot->bobot_wawancara ?>%</th>
+                                                <th><?= $bobot->bobot_praktik ?>%</th>
+                                                <th><?= $bobot->bobot_btq ?>%</th>
                                             </tr>
                                             <tr class="text-center">
                                                 <th>Jenjang Pendidikan</th>
@@ -337,11 +337,11 @@
                                             <?php
                                                 $no = 1;
                                                 foreach($list as $item){
-                                                    $pendidikan = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*20/100;
-                                                    $testulis = $maxmin[0]->tulisMax*$item->tes_tulis*20/100;
-                                                    $wawancara = $maxmin[0]->wawancaraMax*$item->wawancara*20/100;
-                                                    $pk = $maxmin[0]->pkMax*$item->praktik_keahlian*20/100;
-                                                    $btq = $maxmin[0]->btqMax*$item->btq*20/100;
+                                                    $pendidikan = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*$bobot->bobot_pendidikan/100;
+                                                    $testulis = $maxmin[0]->tulisMax*$item->tes_tulis*$bobot->bobot_tulis/100;
+                                                    $wawancara = $maxmin[0]->wawancaraMax*$item->wawancara*$bobot->bobot_wawancara/100;
+                                                    $pk = $maxmin[0]->pkMax*$item->praktik_keahlian*$bobot->bobot_praktik/100;
+                                                    $btq = $maxmin[0]->btqMax*$item->btq*$bobot->bobot_btq/100;
                                                     echo '
                                                     <tr>
                                                         <td>'.$no.'</td>
@@ -389,11 +389,11 @@
                                                 <th class="border">Benefit</th> 
                                             </tr>
                                             <tr class="text-center">
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th class="border">20%</th>
+                                                <th><?= $bobot->bobot_pendidikan ?>%</th>
+                                                <th><?= $bobot->bobot_tulis ?>%</th>
+                                                <th><?= $bobot->bobot_wawancara ?>%</th>
+                                                <th><?= $bobot->bobot_praktik ?>%</th>
+                                                <th class="border"><?= $bobot->bobot_btq ?>%</th>
                                             </tr>
                                             <tr class="text-center">
                                                 <th>Jenjang Pendidikan</th>
@@ -407,11 +407,11 @@
                                             <?php
                                                 $no = 1;
                                                 foreach($list as $item){
-                                                    $pendidikan = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*20/100;
-                                                    $testulis = $maxmin[0]->tulisMax*$item->tes_tulis*20/100;
-                                                    $wawancara = $maxmin[0]->wawancaraMax*$item->wawancara*20/100;
-                                                    $pk = $maxmin[0]->pkMax*$item->praktik_keahlian*20/100;
-                                                    $btq = $maxmin[0]->btqMax*$item->btq*20/100;
+                                                    $pendidikan = $maxmin[0]->pendidikanMax*$item->pendidikan_nilai*$bobot->bobot_pendidikan/100;
+                                                    $testulis = $maxmin[0]->tulisMax*$item->tes_tulis*$bobot->bobot_tulis/100;
+                                                    $wawancara = $maxmin[0]->wawancaraMax*$item->wawancara*$bobot->bobot_wawancara/100;
+                                                    $pk = $maxmin[0]->pkMax*$item->praktik_keahlian*$bobot->bobot_praktik/100;
+                                                    $btq = $maxmin[0]->btqMax*$item->btq*$bobot->bobot_btq/100;
                                                     $np = $pendidikan+$testulis+$wawancara+$pk+$btq;
                                                     echo '                                                        
                                                     <tr>
@@ -462,11 +462,11 @@
                                                 <th class="border">Benefit</th> 
                                             </tr>
                                             <tr class="text-center">
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th>20%</th>
-                                                <th class="border">20%</th>
+                                                <th><?= $bobot->bobot_pendidikan ?>%</th>
+                                                <th><?= $bobot->bobot_tulis ?>%</th>
+                                                <th><?= $bobot->bobot_wawancara ?>%</th>
+                                                <th><?= $bobot->bobot_praktik ?>%</th>
+                                                <th class="border"><?= $bobot->bobot_btq ?>%</th>
                                             </tr>
                                             <tr class="text-center">
                                                 <th>Jenjang Pendidikan</th>

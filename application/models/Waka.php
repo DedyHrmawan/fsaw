@@ -164,6 +164,10 @@ class Waka extends CI_Model{
         $this->db->where('id_pegawai', $param['id_pegawai'])->update('pegawai', $param);
         return true;
     }
+    public function updateBobot($param){
+        $this->db->where('id_bobot', $param['id_bobot'])->update('kriteria_bobot', $param);
+        return true;
+    }
     public function getAllPegawaiRank(){
         $sql = "SELECT p.*,s.id_penilaian,s.pendidikan_nilai,s.tes_tulis,s.wawancara,s.praktik_keahlian,s.btq FROM pegawai p LEFT JOIN penilaian_pegawai s ON p.id_pegawai = s.id_pegawai WHERE p.status = 2";
         $res = $this->db->query($sql)->result();
@@ -181,6 +185,10 @@ class Waka extends CI_Model{
     }
     public function getAllPenilaian(){
         $res = $this->db->get('penilaian_pegawai')->result();
+        return $res;
+    }
+    public function getBobot(){
+        $res = $this->db->get('kriteria_bobot')->row();
         return $res;
     }
     public function getMaxMin(){

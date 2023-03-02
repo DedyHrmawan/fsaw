@@ -39,7 +39,7 @@
                             <?php
                             $no = 1;
                             foreach ($list as $item) {
-                                $status = '';$baten = '';
+                                $status = '';$baten = '';$rekom = '';
                                 if ($item->status_pegawai == 1) {
                                     $status = '<span class="badge badge-warning mr-2">Belum Diterima</span>';
                                     $baten = '<button title="Penerimaan Calon Pegawai" type="button" class="btn btn-sm btn-yellow m-1 mdl_penentuan" data-toggle="modal" data-target="#mdl_penentuan" data-id="' . $item->id_pegawai . '" data-nama="' . $item->nama_lengkap . '" data-np="' . $item->nilai_preferensi . '"><i class="fa fa-user-plus"></i></button>';
@@ -47,12 +47,15 @@
                                     $status = '<span class="badge badge-primary mr-2">Diterima</span>';
                                     $baten = '<button title="Batalkan Penerimaan Calon Pegawai" type="button" class="btn btn-sm btn-danger m-1 mdl_batal" data-toggle="modal" data-target="#mdl_batal" data-id="' . $item->id_pegawai . '" data-nama="' . $item->nama_lengkap . '" data-np="' . $item->nilai_preferensi . '"><i class="fa fa-times-circle"></i></button>';
                                 }
+                                if($item->nilai_preferensi >= 0.8){
+                                    $rekom = '<span class="badge badge-success mr-2">Direkomendasikan</span>';
+                                }
                                 echo '
                                     <tr>
                                         <td>' . $no . '</td>
                                         <td>' . $item->nama_lengkap . '</td>
                                         <td>' . $item->nilai_preferensi . '</td>
-                                        <td>' . $status . '</td>
+                                        <td>' . $status . ''.$rekom.'</td>
                                         <td>
                                             <button title="Detail Calon Pegawai" type="button" class="btn btn-primary ml-1 btn-sm mdl_detail" data-toggle="modal" data-target="#mdl_detail" data-id="' . $item->id_pegawai . '"><i class="fa fa-ellipsis-h"></i></button>
                                             '.$baten.'  
